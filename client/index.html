@@ -1,21 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>NodeJS Game</title>
-</head>
-<body>
-    <h1>Test</h1>
+    <head>
+        <meta charset="UTF-8">
+        <title>Student Bros</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="user-card">
+            <form method="POST" id="form">
+                <div class="join-room-container">
+                    <label for="username">Nom d'utilisateur</label>
+                    <input type="text" id="username" minlength="2" maxlength="20"
+                        placeholder="Saisir votre nom d'utilisateur" required>
+                    <button class="btn btn-primary" id="start" type="submit">Créer un salon privée</button>
+                </div>
+            </form>
+        </div>
 
-    <ul id="events"></ul>
+        <div class="hidden-element" id="waiting-area">
+            <p>Waiting for other player</p>
+        </div>
 
-    <form id="chat-form">
-        <input id="chat"/>
-        <button id="say">Say</button>
-    </form>
+        <div id="share-card">
+            Partage ce lien pour inviter quelqu'un à jouer avec toi
+            <span id="link-to-share"></span>
+        </div>
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="client.js"></script>
-</body>
+        <br>
+        <br>
+        <br>
+
+        <div class="hidden-element" id="rooms-card">
+            <div>Salons disponibles</div>
+            <ul id="rooms-list"></ul>
+        </div>
+
+        <form id="chat-form" class="hidden-element">
+            <input id="chat"/>
+            <button id="say">Say</button>
+        </form>
+
+        <ul id="chat-box"></ul>
+    
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="client.js"></script>
+    </body>
 </html>
