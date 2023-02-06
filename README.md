@@ -21,7 +21,9 @@ désormais on peut créer des rooms qui permettent de créer une session entre s
 
 ## En cours de dev :
 
-Je travail donc sur le fait de créer pour chaque nouvel utilisateur un carré rouge correspondant à son personnage et de lui permettre de le déplacer et de rendre visible le déplacement pour tout les joueurs connecté au server.
+- Je travail donc sur le fait de créer pour chaque nouvel utilisateur un carré rouge correspondant à son personnage et de lui permettre de le déplacer et de rendre visible le déplacement pour tout les joueurs connecté au server.
+- permettre de créer des sessions complètements privé ou le lien personnaliser sera obligatoire pour rejoindre la sessions
+- améliorer l'ui quand on est sur un lien personnaliser (pas prioritaire)
 
 Si vous voulez taffer dessus hésitez pas à tirer une branche. Si vous avez des questions ou des suggestions je prend par ce que je pense que il y a des trucs qui vont pas dans ce que j'ai fais.
 
