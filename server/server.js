@@ -1,5 +1,4 @@
 const { Socket } = require('socket.io');
-
 const express = require('express');
 
 const app = express();
@@ -46,7 +45,7 @@ io.on('connection', (sock) => {
 
         io.to(sock.id).emit('join room', room.id);
 
-        if(room.players.length === 2){
+        if(room.players.length >= 2 && room.players.length <= 4){
             io.to(room.id).emit('start chat', room.players);
         }
     });
@@ -62,6 +61,16 @@ io.on('connection', (sock) => {
 
     sock.on('get rooms', () => {
         io.to(sock.id).emit('list rooms', rooms);
+    });
+
+    sock.on('deconnection', (player) => {
+        console.log('[deconnection] - '+player.username);
+        let room = rooms.find(r => r.id === player.roomId);
+
+        const index = room.players.indexOf(player);
+        room.players.splice(index, 1);
+        
+        console.log(room);
     });
 });
 

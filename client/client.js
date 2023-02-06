@@ -18,6 +18,7 @@ const waitingArea = document.getElementById('waiting-area');
 const chat = document.getElementById('chat-form');
 const roomsCard = document.querySelector('#rooms-card');
 const roomsList = document.querySelector('#rooms-list');
+const disconnect = document.querySelector('#disconnect');
 
 let friendUsername = "";
 
@@ -31,10 +32,11 @@ sock.emit('get rooms');
 
 sock.on('list rooms', (rooms) => {
     let html = "";
+    console.log(rooms);
 
     if(rooms.length > 0){
         rooms.forEach(room => {
-            if(room.players.length !== 2){
+            if(room.players.length <= 4){
                 html += `<li>
                             <p>Salon de ${room.players[0].username} - ${room.id}</p>
                             <button class="join-room" data-room="${room.id}">Rejoindre</button>
@@ -121,11 +123,24 @@ function startChat(players){
     linkToShare.classList.add('hidden-element');
     shareCard.classList.add('hidden-element');
     chat.classList.remove('hidden-element');
+    disconnect.classList.remove('hidden-element');
 
     const friend = players.find(p => p.socketId != player.socketId);
     friendUsername = friend.username;
 }
 
+function onDeconnection(){
+    if(player.roomId !== null){
+        sock.emit('deconnection', player);
+        player.username = "";
+        player.roomId = null;
+        player.socketId = "";
+        window.location.reload();
+    }
+    return null;
+}
+
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmit);
 document.querySelector('#form').addEventListener('submit', onCreateRoom);
+disconnect.addEventListener('click', onDeconnection);
