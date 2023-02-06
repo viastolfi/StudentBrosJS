@@ -10,27 +10,22 @@ const sock = io();
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const roomId = urlParams.get('room');
-
-if(roomId){
-    document.getElementById('start').innerText = 'Rejoindre';
-}
-
 const userNameInput = document.querySelector('#username');
-
 const userCard = document.getElementById('user-card');
-
 const linkToShare = document.getElementById('link-to-share');
 const shareCard = document.getElementById('share-card');
-
 const waitingArea = document.getElementById('waiting-area');
-
 const chat = document.getElementById('chat-form');
-
-// constante correspondante au élément permettant d'afficher la liste des rooms disponibles 
 const roomsCard = document.querySelector('#rooms-card');
 const roomsList = document.querySelector('#rooms-list');
 
 let friendUsername = "";
+
+if(roomId){
+    document.getElementById('start').innerText = 'Rejoindre';
+    let button = document.getElementById('start');
+    button.classList.add('hidden-element');
+}
 
 sock.emit('get rooms');
 
@@ -58,6 +53,15 @@ sock.on('list rooms', (rooms) => {
     }
 });
 
+sock.on('message', (info) => {
+    let parent = document.querySelector('#chat-box');
+
+    let newElement = document.createElement('li');
+    newElement.innerHTML = `${info['sender'].username}`+' - ' +info['text'];
+
+    parent.appendChild(newElement);
+});
+
 sock.on('join room', (roomId) => {
     player.roomId = roomId;
     linkToShare.innerHTML = `<a href="${window.location.href}?room=${player.roomId}" target="_blank">${window.location.href}?room=${player.roomId}</a>`;
@@ -68,24 +72,15 @@ sock.on('start chat', (players) => {
     startChat(players);
 });
 
-const writeEvent = function(text){
-    let parent = document.querySelector('#chat-box');
-
-    let newElement = document.createElement('li');
-    newElement.innerHTML = text;
-
-    parent.appendChild(newElement);
-};
-
 const onFormSubmit = function(event){
     event.preventDefault();
 
     let input = document.querySelector('#chat');
-    let text = input.value;
+    let info = {'text': input.value, 'player': player};
 
     input.value = '';
 
-    sock.emit('message', text);
+    sock.emit('message', info);
 };
 
 const joinRoom = function() {
@@ -131,7 +126,6 @@ function startChat(players){
     friendUsername = friend.username;
 }
 
-sock.on('message', writeEvent);
 
 document.querySelector('#chat-form').addEventListener('submit', onFormSubmit);
 document.querySelector('#form').addEventListener('submit', onCreateRoom);

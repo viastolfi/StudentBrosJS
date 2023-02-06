@@ -51,8 +51,13 @@ io.on('connection', (sock) => {
         }
     });
 
-    sock.on('message', (text) => {
-        io.emit('message', text);
+    sock.on('message', (info) => {
+        let room = info['player'].roomId;
+        let text = info['text'];
+
+        let out = {'text': text, 'sender': info['player']};
+
+        io.to(room).emit('message', out);
     });
 
     sock.on('get rooms', () => {
