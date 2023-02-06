@@ -18,12 +18,19 @@ désormais on peut créer des rooms qui permettent de créer une session entre s
 - Utiliser le lien personnaliser d'une session privé -> rentrer son pseudo -> cliquer sur rejoindre
 - Une fois sur le lien la liste des rooms ouvertes est affiché -> entrer son pseudo -> rejoindre une des rooms
 
+### Modification du 06/02
+
+désormais les rooms permettront d'acceillir de 2 à 4 joueurs en simultané (la partie se lance à partir de deux joueurs).
+
+il est possible de quitter la rooms lorsque qu'on est connecté à celle ci
+
 
 ## En cours de dev :
 
 - Je travail donc sur le fait de créer pour chaque nouvel utilisateur un carré rouge correspondant à son personnage et de lui permettre de le déplacer et de rendre visible le déplacement pour tout les joueurs connecté au server.
 - permettre de créer des sessions complètements privé ou le lien personnaliser sera obligatoire pour rejoindre la sessions
 - améliorer l'ui quand on est sur un lien personnaliser (pas prioritaire)
+- corriger le bug lorsque l'on se déconnecte qui fait que globalement la page devient inutilisable et qu'il faut un rouvrir une
 
 Si vous voulez taffer dessus hésitez pas à tirer une branche. Si vous avez des questions ou des suggestions je prend par ce que je pense que il y a des trucs qui vont pas dans ce que j'ai fais.
 
