@@ -8,7 +8,16 @@ ensuite allez sur
 
 `localhost:8080`
 
-il est donc possible d'allez sur la page sur deux sessions séparés et de se rendre compte que le chat est mis à jour pour les deux sessions.
+## Dernière amélioration : 
+
+désormais on peut créer des rooms qui permettent de créer une session entre seulement deux utilisateurs comme le jeu devrait fonctionner.
+
+**Pour créer une room** : saisir un nom d'utilisateur puis créer la session => vous êtes dans une page d'attente avec un lien personnaliser pour inviter des gens.
+
+**Pour rejoindre une room** : deux solution
+- Utiliser le lien personnaliser d'une session privé -> rentrer son pseudo -> cliquer sur rejoindre
+- Une fois sur le lien la liste des rooms ouvertes est affiché -> entrer son pseudo -> rejoindre une des rooms
+
 
 ## En cours de dev :
 
