@@ -23,7 +23,6 @@ const disconnect = document.querySelector('#disconnect');
 let friendUsername = "";
 
 if(roomId){
-    document.getElementById('start').innerText = 'Rejoindre';
     let button = document.getElementById('start');
     button.classList.add('hidden-element');
 }
@@ -32,11 +31,10 @@ sock.emit('get rooms');
 
 sock.on('list rooms', (rooms) => {
     let html = "";
-    console.log(rooms);
 
     if(rooms.length > 0){
         rooms.forEach(room => {
-            if(room.players.length <= 4){
+            if(room.players.length < 4){
                 html += `<li>
                             <p>Salon de ${room.players[0].username} - ${room.id}</p>
                             <button class="join-room" data-room="${room.id}">Rejoindre</button>

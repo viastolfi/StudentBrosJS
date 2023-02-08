@@ -69,8 +69,6 @@ io.on('connection', (sock) => {
 
         const index = room.players.indexOf(player);
         room.players.splice(index, 1);
-        
-        console.log(room);
     });
 });
 
