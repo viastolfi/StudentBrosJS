@@ -19,4 +19,4 @@ Le but de cette SAE sera de développer un jeu full javascript inspiré du jeu "
 - toujours faire valider son travail aux autres pour être sûr que tout avance bien (case à valider du KanBan)
 - Les branches ne doivent pas durer plus longtemps qu'un sprint et être merge régulièrement
 - commentés uniquement ce qui doit l'être
-- essayer de garder son code lisible et clair pour tout le monde (retour à la ligne)
+- essayer de garder son code lisible et clair pour tout le monde (retour à la ligne, ...)
