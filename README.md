@@ -2,6 +2,14 @@
 
 Le but de cette SAE sera de développer un jeu full javascript inspiré du jeu "Mario Bros". Un "étudiant" devra se déplacer, en scrolling horizontal, dans un monde rempli de distractions, et accumuler de la connaissance et du savoir pour vaincre le boss de l'ignorance.
 
+## Comment lancer le projet
+
+Aller dans le répertoire `/src` et effectuer la commande
+
+`npm run dev`
+
+Le serveur est ouvert sur l'adresse `localhost:8080`
+
 ## Contraintes
 - Présence de deux modes de jeu : simple ou multijoueur en réseau.
 - Respect d'une qualité de conception et de codage.
