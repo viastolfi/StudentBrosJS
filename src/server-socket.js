@@ -1,4 +1,5 @@
-const { io } = require(`${__dirname}/app.js`)
+const { io } = require(`${__dirname}/app.js`);
+const { roomArray } = require(`${__dirname}/app.js`);
 
 // le socket s'ouvre lors de la connection d'un client
 io.on('connection', (socket) => {
@@ -12,4 +13,8 @@ io.on('connection', (socket) => {
             message : "World"
         });
     });
+
+    socket.on('get rooms', () => {
+        io.to(socket.id).emit('list room', roomArray);
+    })
 });

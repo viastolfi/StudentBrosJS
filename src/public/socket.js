@@ -13,4 +13,11 @@ export default class ClientSocket{
             pageBuilder.addElement(response.message, parent);
         });
     }
+
+    getRoomList(){
+        sock.emit('get rooms');
+        sock.on('list rooms', (roomArray) => {
+            console.log(roomArray);
+        });
+    }
 }
