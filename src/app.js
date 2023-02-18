@@ -6,7 +6,7 @@ const http = require('http').createServer(app);
 const clientPath =  `${__dirname}/public/`;
 const port = 8080;
 
-let roomArray = ["test", "pomme"]
+let roomArray = []
 
 http.listen(port, () => {
     console.log(`Listening on http://localhost${port}`)

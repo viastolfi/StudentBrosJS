@@ -17,7 +17,12 @@ export default class ClientSocket{
     getRoomList(){
         sock.emit('get rooms');
         sock.on('list rooms', (roomArray) => {
-            console.log(roomArray);
+            let pageBuilder = new PageBuilder;
+            pageBuilder.displayRooms(roomArray);
         });
+    }
+
+    sendPlayerData(player){
+        sock.emit('player data', player);
     }
 }

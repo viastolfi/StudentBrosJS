@@ -1,25 +1,33 @@
 import Player from './player.js';
-import ClientSocket from './socket.js'
+import ClientSocket from './clientSocket.js'
 
+const HIDE_ELEMENT = 'hidden-element';
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const roomId = urlParams.get('room');
-
 let socket = new ClientSocket();
 
 socket.getRoomList();
 
 const onCreateRoom = function (event){
     event.preventDefault();
-    const username = document.querySelector('#username').value;
+    const form = document.querySelector('#form');
+    const waitingArea = document.querySelector('#waiting-area');
+    const username = document.querySelector('#username');
+    let usernameValue = username.value;
+    let player;
 
     if(roomId){
-        console.log(new Player(false, roomId, username, socket.id));
+        player = new Player(false, roomId, usernameValue, socket.id);
     }else{
-        console.log(new Player(true, "", username, socket.id));
+        player = new Player(true, "", usernameValue, socket.id);
     }
 
+    socket.sendPlayerData(player)
+    
+    form.classList.add(HIDE_ELEMENT);
+    waitingArea.classList.remove(HIDE_ELEMENT);
 }
 
 document.querySelector('#form').addEventListener('submit',onCreateRoom);
