@@ -6,6 +6,8 @@ const app = express();
 const http = require('http').createServer(app);
 const port = 8080;
 
+const containerDirname = __dirname+"/containers/StudentBrosJS-studentbrosjs/"
+
 let roomArray = []
 
 http.listen(port, () => {
@@ -16,11 +18,11 @@ const io = require('socket.io')(http);
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/index.html'))
+    res.sendFile(path.join(containerDirname, 'public/index.html'))
 });
 
 app.get('/multiplayerHomePage', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public/multiplayerHomePage.html'))
+    res.sendFile(path.join(containerDirname, 'public/multiplayerHomePage.html'))
 });
 
 module.exports = {
