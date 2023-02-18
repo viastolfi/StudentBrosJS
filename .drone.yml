@@ -32,8 +32,8 @@ steps:
   - name: code-analysis
     image: sonarsource/sonar-scanner-cli
     environment:
-      SONAR-TOKEN:
+      SONAR_TOKEN:
         from_secret: SONAR-TOKEN
     commands:
-      - sonar-scanner -X -Dsonar.projectKey=StudentBrosJS -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR-TOKEN}
+      - sonar-scanner -Dsonar.projectKey=StudentBrosJS -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR-TOKEN}
     depends_on: [ studentbrosjs-build ]
