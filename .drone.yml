@@ -1,0 +1,39 @@
+kind: pipeline
+type: docker
+name: StudentBrosJS
+
+trigger:
+  event:
+    - push
+
+steps:
+
+  - name: studentbrosjs-build
+    image: plugins/docker
+    settings:
+      dockerfile: Dockerfile
+      context: .
+      registry: hub.codefirst.iut.uca.fr
+      repo: hub.codefirst.iut.uca.fr/vincent.astolfi/studentbrosjs
+      username:
+        from_secret: registry-username
+      password:
+        from_secret: registry-password
+
+  - name: studentbrosjs-deployment
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-dockerproxy-clientdrone:latest
+    environment:
+      IMAGENAME: hub.codefirst.iut.uca.fr/vincent.astolfi/studentbrosjs:latest
+      CONTAINERNAME: studentbrosjs
+      COMMAND: create
+      OVERWRITE: true
+    depends_on: [ studentbrosjs-build ] 
+
+  - name: code-analysis
+    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-sonar:latest
+    environment:
+      SONAR-TOKEN:
+        from_secret: SONAR-TOKEN
+    commands:
+      - sonar-scanner -Dsonar.projectKey=StudentBrosJS -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR-TOKEN}
+    depends_on: [ studentbrosjs-build ]
