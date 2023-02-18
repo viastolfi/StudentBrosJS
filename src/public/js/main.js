@@ -1,14 +1,12 @@
-import Player from './player.js';
-import ClientSocket from './clientSocket.js'
+import Player from './Player.js';
+import ClientSocket from './ClientSocket.js'
 
 const HIDE_ELEMENT = 'hidden-element';
 
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const roomId = urlParams.get('room');
-let socket = new ClientSocket();
-
-socket.getRoomList();
+const socket = new ClientSocket();
 
 const onCreateRoom = function (event){
     event.preventDefault();
@@ -19,15 +17,29 @@ const onCreateRoom = function (event){
     let player;
 
     if(roomId){
-        player = new Player(false, roomId, usernameValue, socket.id);
+        player = new Player(false, roomId, usernameValue, socket.sock.id);
     }else{
-        player = new Player(true, "", usernameValue, socket.id);
+        player = new Player(true, "", usernameValue, socket.sock.id);
     }
 
     socket.sendPlayerData(player)
-    
+
     form.classList.add(HIDE_ELEMENT);
     waitingArea.classList.remove(HIDE_ELEMENT);
 }
 
+export function joinRoom(){
+    const userNameInput = document.querySelector('#username');
+    let player;
+    if(userNameInput.value !== ""){
+        player = new Player(false, this.dataset.room, userNameInput.value, socket.sock.id);
+
+        socket.sendPlayerData(player);
+    }
+
+    const form = document.querySelector('#form');
+    form.classList.add(HIDE_ELEMENT);
+}
+
+socket.getRoomList();
 document.querySelector('#form').addEventListener('submit',onCreateRoom);

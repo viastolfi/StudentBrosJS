@@ -1,3 +1,5 @@
+import { joinRoom } from "./main.js";
+
 export default class PageBuilder{
     createPage(content){
 
@@ -14,9 +16,6 @@ export default class PageBuilder{
         const roomsList = document.querySelector('#rooms-list');
         const roomsCard = document.querySelector('#rooms-card');
 
-        console.log(roomArray);
-        console.log(roomArray.length);
-
         if(roomArray.length > 0){
             roomArray.forEach(room => {
                 if(room.players.length < 4){
@@ -29,5 +28,8 @@ export default class PageBuilder{
             });
         }
         roomsList.innerHTML = html;
+        for(const element of document.getElementsByClassName('join-room')){
+            element.addEventListener('click', joinRoom, false);
+        }
     }
 }

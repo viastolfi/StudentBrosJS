@@ -40,5 +40,11 @@ io.on('connection', (socket) => {
         room.players.push(player);
 
         socket.join(room.id);
+
+        io.to(socket.id).emit('join room', room.id);
+    
+        if(room.players.length >= 2 && room.players.length <= 4){
+            io.to(room.id).emit('start game', room.players);
+        }
     });
 });

@@ -1,12 +1,13 @@
-const sock = io()
-import PageBuilder from "./pageBuilder.js";
+import PageBuilder from "./PageBuilder.js";
 
 export default class ClientSocket{
-    constructor(){}
+    constructor(){
+        this.sock = io();
+    }
 
     askForWorld(){
         // envoie un soket avec le nom 'hello' au serveur et attend une réponse
-        sock.emit('hello', (response) => {
+        this.sock.emit('hello', (response) => {
             // lorsque la réponse est reçu créer le nouvel élément
             let pageBuilder = new PageBuilder()
             let parent = document.querySelector('#container')
@@ -15,14 +16,24 @@ export default class ClientSocket{
     }
 
     getRoomList(){
-        sock.emit('get rooms');
-        sock.on('list rooms', (roomArray) => {
+        this.sock.emit('get rooms');
+        this.sock.on('list rooms', (roomArray) => {
             let pageBuilder = new PageBuilder;
             pageBuilder.displayRooms(roomArray);
         });
     }
 
     sendPlayerData(player){
-        sock.emit('player data', player);
+        this.sock.emit('player data', player);
+        this.sock.on('join room', (roomId) => {
+            player.roomId = roomId;
+        })
+        this.startGame();
+    }
+
+    startGame(){
+        this.sock.on('start game', (players) => {
+            console.log(players);
+        })
     }
 }
