@@ -35,5 +35,5 @@ steps:
       SONAR-TOKEN:
         from_secret: SONAR-TOKEN
     commands:
-      - sonar-scanner -Dsonar.projectKey=StudentBrosJS -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR-TOKEN}
+      - sonar-scanner -X -Dsonar.projectKey=StudentBrosJS -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${SONAR-TOKEN}
     depends_on: [ studentbrosjs-build ]
