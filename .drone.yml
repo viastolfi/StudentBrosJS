@@ -30,7 +30,7 @@ steps:
     depends_on: [ studentbrosjs-build ] 
 
   - name: code-analysis
-    image: hub.codefirst.iut.uca.fr/thomas.bellembois/codefirst-sonar:latest
+    image: sonarsource/sonar-scanner-cli
     environment:
       SONAR-TOKEN:
         from_secret: SONAR-TOKEN
