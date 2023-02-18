@@ -27,6 +27,7 @@ steps:
       CONTAINERNAME: studentbrosjs
       COMMAND: create
       OVERWRITE: true
+      ADMINS: vincentastolfi,lucasevard,flavienandre,theorenaud
     depends_on: [ studentbrosjs-build ] 
 
   - name: code-analysis
