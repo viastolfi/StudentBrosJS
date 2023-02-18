@@ -3,7 +3,7 @@ const express = require('express');
 
 const app = express();
 const http = require('http').createServer(app);
-const clientPath =  `${__dirname}/public/index.html`;
+const clientPath =  `${__dirname}/public/`;
 const port = 8080;
 
 let roomArray = []
