@@ -1,20 +1,51 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+
+html{
+    font-family: 'Press Start 2P';
+    background-image: url('https://wallpaper.dog/large/20403370.jpg');
+}
+
 .title{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
+.title h1{
+    font-size: 50px;
+}
+
 .hidden-element{
     display: none;
 }
 
-.join-room-container{
+.join-room-container{   
     display: flex;
-    flex-direction: column;
+    align-items: center;
+}
+
+#user-card{
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 .input-container{
-    width: 12.2rem;
-    margin: 1rem;
+    border: 0.2rem;
+    text-align: center;
+    font-family: inherit;
+    border-color: black;
+    border-style:solid;
+}
+
+.btn-primary{
+    background: none;
+	color: white;
+    font-family: 'Press Start 2P';
+	border: none;
+    padding: 0.5rem;
+    background-color: #008B01;
+	cursor: pointer;
+	outline: inherit;
 }
