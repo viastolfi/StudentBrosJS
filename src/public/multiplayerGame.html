@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/multiplayerHomePage.css">
+    <title>StudentJS</title>
+</head>
+<body>
+    <div class="centered-element">
+        <h1>Student JS</h1>
+        <h2>Partie multijoueurs</h2>
+    </div>
+    
+    <div class="multiplayer-container">
+        <div class="game-container">
+            Yaura un jeu la askip
+        </div>
+        <div class="chat-container bordered">
+            Chat
+            <form id="chat-form">
+                <input id="chat"/>
+                <button id="say">Send</button>
+            </form>
+    
+            <ul id="chat-box"></ul>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>

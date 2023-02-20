@@ -1,4 +1,5 @@
 import PageBuilder from "./PageBuilder.js";
+import Chat from "./Chat.js"
 
 export default class ClientSocket{
     constructor(){
@@ -33,7 +34,10 @@ export default class ClientSocket{
 
     startGame(){
         this.sock.on('start game', (players) => {
-            console.log(players);
+            window.location.href = './multiplayerGame.html';
+            let chat = new Chat(this.sock);
+            console.log(players)
+            chat.listenMessage();
         })
     }
 }

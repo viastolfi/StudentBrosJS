@@ -6,7 +6,7 @@ const HIDE_ELEMENT = 'hidden-element';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const roomId = urlParams.get('room');
-const socket = new ClientSocket();
+export const socket = new ClientSocket();
 
 const onCreateRoom = function (event){
     event.preventDefault();

@@ -18,3 +18,32 @@
     width: 12.2rem;
     margin: 1rem;
 }
+
+.multiplayer-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.game-container{
+    width: 75%;
+}
+
+.chat-container{
+    width: 25%;
+    height: 45rem;
+}
+
+#chat-form{
+    position: absolute;
+    width: 35%;
+    bottom: 6rem;
+    margin-left: 10px;
+}
+
+.bordered{
+    box-sizing: border-box;
+    margin: 10px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 3px solid #969696;
+}

@@ -47,4 +47,13 @@ io.on('connection', (socket) => {
             io.to(room.id).emit('start game', room.players);
         }
     });
+
+    socket.on('message', (info) => {
+        let room = info['player'].roomId;
+        let text = info['text'];
+
+        let out = {'text': text, 'sender': info['player']};
+
+        io.to(room).emit('message', out);
+    });
 });
