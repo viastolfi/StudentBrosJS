@@ -3,7 +3,7 @@
 
 html{
     font-family: 'Press Start 2P';
-    background-image: url('https://wallpaper.dog/large/20403370.jpg');
+    background-image: url('/home/lucas/Documents/sae401/StudentBrosJS/src/public/styles/img/fondSAE.png');
 }
 
 .title{
@@ -43,9 +43,9 @@ html{
     background: none;
 	color: white;
     font-family: 'Press Start 2P';
-	border: none;
-    padding: 0.5rem;
-    background-color: #008B01;
+    margin-left: 5%;
+    /*background-color: #008B01;*/
+    background-color: black;
 	cursor: pointer;
 	outline: inherit;
 }
