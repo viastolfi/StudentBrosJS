@@ -3,10 +3,11 @@
 
 html{
     font-family: 'Press Start 2P';
-    background-image: url('/home/lucas/Documents/sae401/StudentBrosJS/src/public/styles/img/fondSAE.png');
+    background-image: url('./img/fondSAE.png');
 }
 
-.title{
+
+.centered-element{
     display: flex;
     flex-direction: column;
     align-items: center;

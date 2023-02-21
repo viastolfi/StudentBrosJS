@@ -6,7 +6,7 @@
     <title>StudentJS</title>
 </head>
 <body>
-    <div class="title">
+    <div class="centered-element">
         <h1>Student JS</h1>
         <h2>Partie multijoueurs</h2>
     </div>
@@ -26,8 +26,8 @@
         </form>
     </div>
 
-    <div class="hidden-element" id="waiting-area">
-        <p>Waiting for other player</p>
+    <div id="waiting-area" class="centered-element hidden-element">
+        En attente d'autre joueur
     </div>
 
     <div id="share-card" class="hidden-element">
@@ -43,6 +43,8 @@
         <ul id="rooms-list"></ul>
     </div>
 
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="module" src="./js/main.js"></script>
 </body>
 <script src="sounds.js"></script>
 </html>
