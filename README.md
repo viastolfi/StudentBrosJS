@@ -1,6 +1,6 @@
 # Student bros JS
 
-`Student Bros JS` est un jeu type plateforme développé totalement en `JavaScript`. Ce jeu est inspiré du jeu "Mario Bros", où un étudiant devra se déplacer, en scrolling horizontal, dans 3 niveaux différents reprenant les années de notre BUT. Le but de notre jeu est d'accumuler un maximum de points, le tout en escivant les différentes `distractions` présent durant notre cursus scolaire. Notre jeu est jouable en `solo` ainsi qu'en `multijoueur en ligne`. Le dernier niveau incorpore un `boss` qui marquera la fin du jeu.
+`Student Bros JS` est un jeu type plateforme développé totalement en `JavaScript`. Ce jeu est inspiré du jeu "Mario Bros", où un étudiant  se déplace en scrolling horizontal, dans 3 niveaux différents reprenant les années de notre BUT. Le but de notre jeu est d'accumuler un maximum de points, le tout en escivant les différentes `distractions` présentes durant notre cursus scolaire. Notre jeu est jouable en `solo` ainsi qu'en `multijoueur en ligne`. Le dernier niveau incorpore un `boss` qui marquera la fin du jeu.
 
 ## Comment lancer le projet
 
