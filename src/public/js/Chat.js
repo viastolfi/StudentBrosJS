@@ -1,6 +1,15 @@
+import { player, socket } from './main.js'
+
 export default class Chat{
-    constructor(socket){
-        this.sock = socket;
+    constructor(roomId){
+        this.players = [];
+        this.roomId = roomId;
+    }
+
+    addUser(player){
+        if(this.players.length <= 4){
+            this.players.push(player);
+        }
     }
 
     listenMessage(){
@@ -17,13 +26,17 @@ export default class Chat{
 function onFormSubmit(event){
         event.preventDefault();
 
-        console.log('teeeest');
+        console.log(player)
 
         let input = document.querySelector('#chat');
         let info = {'text': input.value, 'player': player};
 
         input.value = '';
 
-        sock.emit('message', info);
+        socket.sendMessage(info);
 }
-document.querySelector('#chat-form').addEventListener('submit', onFormSubmit);
+try{
+    document.querySelector('#chat-form').addEventListener('submit', onFormSubmit);
+}catch(e){
+    console.log('grosse salope')
+}

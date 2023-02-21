@@ -29,15 +29,25 @@ export default class ClientSocket{
         this.sock.on('join room', (roomId) => {
             player.roomId = roomId;
         })
-        this.startGame();
+        this.startGame(player);
     }
 
-    startGame(){
+    startGame(player){
         this.sock.on('start game', (players) => {
             window.location.href = './multiplayerGame.html';
-            let chat = new Chat(this.sock);
+            let chat
+            if(player.isHost){
+                chat = new Chat(player.roomId);
+            }else{
+                
+            }
+            chat.addUser(player);
             console.log(players)
             chat.listenMessage();
         })
+    }
+
+    sendMessage(info){
+        this.sock.emit('message', info);
     }
 }

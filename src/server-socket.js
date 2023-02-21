@@ -49,6 +49,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('message', (info) => {
+        console.log(info);
         let room = info['player'].roomId;
         let text = info['text'];
 
