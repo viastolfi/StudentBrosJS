@@ -10,7 +10,6 @@ io.on('connection', (socket) => {
 
 	socket.on('getCanva', () => {
 		canva = createFirstCanvas();	
-		console.log(canva);
 		// socket.emit('playerRender', canva);
 	});
 
