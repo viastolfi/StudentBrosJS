@@ -36,4 +36,15 @@ export default class ClientSocket{
             console.log(players);
         })
     }
+
+	sendMovement(moove){
+		this.sock.emit('moove', moove);
+	}
+
+	getCanva() {
+		this.sock.emit('getCanva');
+		this.sock.on('playerRender', (canva) => {
+			console.log(canva);
+		});
+	}
 }
