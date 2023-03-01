@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\js",
+    "\\levels"
   ],
+  "SelectedNode": "\\js\\KeyboardState.js",
   "PreviewInSolutionExplorer": false
 }
