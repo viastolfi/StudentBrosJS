@@ -3,8 +3,10 @@ const express = require('express');
 
 const app = express();
 const http = require('http').createServer(app);
-const path = require('/containers/StudentBrosJS-studentbrosjs');
+const path = require('path');
 const port = 8080;
+
+app.use(express.static('public'));
 
 let roomArray = []
 

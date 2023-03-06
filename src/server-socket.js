@@ -10,7 +10,8 @@ io.on('connection', (socket) => {
 
 	socket.on('getCanva', () => {
 		canva = createFirstCanvas();	
-		// socket.emit('playerRender', canva);
+        let buffer = canva.toBuffer('image/png');
+		socket.emit('playerRender', buffer);
 	});
 
 	// lorsqu'un socket portant le nom 'hello' est reçu fait l'action suivante

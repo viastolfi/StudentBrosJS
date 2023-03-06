@@ -43,8 +43,11 @@ export default class ClientSocket{
 
 	getCanva() {
 		this.sock.emit('getCanva');
-		this.sock.on('playerRender', (canva) => {
-			console.log(canva);
-		});
+		this.sock.on('playerRender', (IncomeBuffer) => {
+            let ctx = document.createElement('canvas').getContext('2d');
+            let array = new Uint8ClampedArray(IncomeBuffer);
+            let image = new ImageData(array, 1200, 600);
+            ctx.putImageData(image, 0, 0);
+        })
 	}
 }
