@@ -40,6 +40,6 @@ export function joinRoom(){
     const form = document.querySelector('#form');
     form.classList.add(HIDE_ELEMENT);
 }
-
+  
 socket.getRoomList();
 document.querySelector('#form').addEventListener('submit',onCreateRoom);
