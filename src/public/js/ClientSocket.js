@@ -44,10 +44,25 @@ export default class ClientSocket{
 	getCanva() {
 		this.sock.emit('getCanva');
 		this.sock.on('playerRender', (IncomeBuffer) => {
-            let ctx = document.createElement('canvas').getContext('2d');
-            let array = new Uint8ClampedArray(IncomeBuffer);
-            let image = new ImageData(array, 1200, 600);
-            ctx.putImageData(image, 0, 0);
+            let base64 = this.arrayBufferToBase64(IncomeBuffer);
+            const myCanvas = document.getElementById('screen'); 
+            const myContext = myCanvas.getContext('2d');
+            
+            let image = new Image();
+            image.onload = function() {
+                myContext.drawImage(image, 0, 0);
+            };
+            image.src = "data:image/png;base64,"+base64;
         })
 	}
+
+    arrayBufferToBase64(buffer){
+        let binary = '';
+        let bytes = new Uint8Array(buffer);
+        let len = bytes.byteLength;
+        for(let i=0; i < len; i++){
+            binary += String.fromCharCode( bytes[i] );
+        }
+        return window.btoa(binary);
+    }
 }

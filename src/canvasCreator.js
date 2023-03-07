@@ -7,7 +7,7 @@ function createFirstCanvas() {
 	const canvas = createCanvas(width, height)
 	const context = canvas.getContext('2d')
 
-	context.fillStyle = '#fff'
+	context.fillStyle = '#000000'
 	context.fillRect(0, 0, width, height)
 
 	return canvas;
