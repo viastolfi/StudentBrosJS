@@ -7,7 +7,9 @@ Le but de cette SAE sera de développer un jeu full javascript inspiré du jeu "
 - Respect d'une qualité de conception et de codage.
 - Couverture de test maximale
 
-
+## Test
+- Actuellement test mis en place pour le déplacement des joueurs
+`npm test` pour lancer le test
 
 
 ## Liens utiles
