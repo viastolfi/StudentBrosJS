@@ -10,7 +10,6 @@ export function loadPersoSprites() {
     });
 }
 
-
 export function loadBackgroundSprites() {
     return loadImage('/image/tiles.png').then(image => {
         const sprites = new SpriteSheet(image, 16, 16);

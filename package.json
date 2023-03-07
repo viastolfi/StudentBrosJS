@@ -1,0 +1,25 @@
+{
+  "name": "testnpm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "serve ./public",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "Le but de cette SAE sera de développer un jeu full javascript inspiré du jeu \"Mario Bros\". Un \"étudiant\" devra se déplacer, en scrolling horizontal, dans un monde rempli de distractions, et accumuler de la connaissance et du savoir pour vaincre le boss de l'ignorance.",
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://codefirst.iut.uca.fr/git/StudentBrosJS/StudentBrosJS.git"
+  }
+}
