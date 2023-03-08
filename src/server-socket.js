@@ -1,13 +1,20 @@
 const { io } = require(`${__dirname}/app.js`);
 const { roomArray } = require(`${__dirname}/app.js`);
 const { Room } = require(`${__dirname}/room.js`);
+const { createFirstCanvas } = require(`${__dirname}/canvasCreator.js`);
 
 // le socket s'ouvre lors de la connection d'un client
 io.on('connection', (socket) => {
     // la console du serveur est visible dans le terminal ou vous avez lancer le serveur
     console.log('New person connected');
 
-    // lorsqu'un socket portant le nom 'hello' est reçu fait l'action suivante
+	socket.on('getCanva', () => {
+		canva = createFirstCanvas();	
+        let buffer = canva.toBuffer('image/png');
+		socket.emit('playerRender', buffer);
+	});
+
+	// lorsqu'un socket portant le nom 'hello' est reçu fait l'action suivante
     socket.on('hello', (callback) => {
         // renvoie la réponse au socket directement (en JSON)
         callback({
@@ -46,4 +53,9 @@ io.on('connection', (socket) => {
             io.to(room.id).emit('start game', room.players);
         }
     });
+
+	socket.on('moove', (movement) => {
+		console.log('test');
+		console.log(movement);
+	});
 });
