@@ -12,8 +12,6 @@ http.listen(port, () => {
     console.log(`Listening on http://localhost${port}`)
 })
 
-app.get('/multijoueurs', function (req, res) {
-    res.sendFile(__dirname+'/public/multiplayerHomePage.html')});
 
 const io = require('socket.io')(http);
 app.use(express.static(clientPath));
@@ -22,3 +20,7 @@ module.exports = {
     io,
     roomArray,
 }
+
+
+app.get('/multijoueurs', function (req, res) {
+    res.sendFile(process.cwd()+'/public/multiplayerHomePage.html')});

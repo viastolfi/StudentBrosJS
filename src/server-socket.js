@@ -14,7 +14,6 @@ io.on('connection', (socket) => {
             message : "World"
         });
     });
-
     socket.on('get rooms', () => {
         io.to(socket.id).emit('list rooms', roomArray);
     })
