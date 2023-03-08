@@ -23,4 +23,5 @@ module.exports = {
 
 
 app.all('/multijoueurs', function (req, res) {
-    res.sendFile(__dirname+'/public/multiplayerHomePage.html')});
+    res.sendFile(__dirname+'/public/multiplayerHomePage.html')
+});

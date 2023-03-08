@@ -1,5 +1,7 @@
 import PageBuilder from "./PageBuilder.js";
 
+
+
 export default class ClientSocket{
     constructor(){
         this.sock = io();
