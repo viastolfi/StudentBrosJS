@@ -8,14 +8,14 @@ export function createPlayer() {
     return loadPersoSprite()
         .then(sprite => {
             const player = new Entity();
-            player.size.set(87, 87);
+            player.size.set(14, 16);
 
             player.addTrait(new Go());
             player.addTrait(new Jump());
             //player.addTrait(new Velocity());
 
             player.draw = function drawPlayer(context) {
-                sprite.draw('idle', context, this.pos.x, this.pos.y);
+                sprite.draw('idle', context, 0,0);
             }
 
             return player;
