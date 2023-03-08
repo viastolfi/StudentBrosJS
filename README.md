@@ -15,6 +15,9 @@ Le serveur est ouvert sur l'adresse `localhost:8080`
 - Respect d'une qualité de conception et de codage.
 - Couverture de test maximale
 
+## Test
+- Actuellement test mis en place pour le déplacement des joueurs
+`npm test` pour lancer le test
 ## Liens utiles
 
 - [nodejs + conteneur](https://nodejs.org/fr/docs/guides/nodejs-docker-webapp/)

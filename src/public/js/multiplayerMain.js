@@ -1,4 +1,5 @@
 import Player from './Player.js';
+import { socket } from './main.js';
 
 const HIDE_ELEMENT = 'hidden-element';
 
