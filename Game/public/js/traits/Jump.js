@@ -1,11 +1,12 @@
-import {Trait} from '../Entity.js';
+import Trait from '../Trait.js';
 
 export default class Jump extends Trait {
     constructor() {
         super('jump');
 
-        this.duration = 0.5;
+        this.duration = 0.3;
         this.engageTime = 0;
+        this.canJump = false;
 
         this.velocity = 200;
     }
@@ -16,10 +17,11 @@ export default class Jump extends Trait {
 
     cancel() {
         this.engageTime = 0;
+        this.canJump = false;
     }
 
     update(entity, deltaTime) {
-        if (this.engageTime > 0) {
+        if (this.engageTime > 0 && this.canJump) {
             entity.vel.y = -this.velocity;
             this.engageTime -= deltaTime;
         }

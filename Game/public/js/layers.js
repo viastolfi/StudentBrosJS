@@ -3,8 +3,8 @@ export function createBackgroundLayer(level, sprites) {
     const resolver = level.tileCollider.tiles;
 
     const buffer = document.createElement('canvas');
-    buffer.width = 800;    //achange ? 1500
-    buffer.height = 240;    //achange ? 750
+    buffer.width = 500;    
+    buffer.height = 240;    
 
     const context = buffer.getContext('2d');
 
@@ -74,18 +74,28 @@ export function createCollisionLayer(level) {
         return getByIndexOriginal.call(tileResolver, x, y);
     }
 
-    return function drawCollision(context) {
+    return function drawCollision(context, camera) {
         context.strokeStyle = 'blue';
         resolvedTiles.forEach(({ x, y }) => {
             context.beginPath();
-            context.rect(x * tileSize, y * tileSize, tileSize, tileSize);
+            context.rect(
+                x * tileSize - camera.pos.x,
+                y * tileSize - camera.pos.y,
+                tileSize,
+                tileSize
+            );
             context.stroke();
         });
 
         context.strokeStyle = 'red';
         level.entities.forEach(entity => {
             context.beginPath();
-            context.rect(entity.pos.x, entity.pos.y, entity.size.x, entity.size.y);
+            context.rect(
+                entity.pos.x - camera.pos.x,
+                entity.pos.y - camera.pos.y,
+                entity.size.x,
+                entity.size.y
+            );
             context.stroke();
         });
 

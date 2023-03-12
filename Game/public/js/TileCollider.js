@@ -33,6 +33,7 @@ export default class TileCollider {
                 if (entity.pos.x < match.x2) {
                     entity.pos.x = match.x2;
                     entity.vel.x = 0;
+                    
                 }
             }
         });
@@ -61,6 +62,9 @@ export default class TileCollider {
                 if (entity.pos.y + entity.size.y > match.y1) {
                     entity.pos.y = match.y1 - entity.size.y;
                     entity.vel.y = 0;
+                    if (!entity.traits[1].canJump) {
+                        entity.traits[1].canJump = true;
+                    }
                 }
             } else if (entity.vel.y < 0) {
                 if (entity.pos.y < match.y2) {

@@ -1,9 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\image",
     "\\js",
+    "\\js\\traits",
     "\\levels"
   ],
-  "SelectedNode": "\\levels\\1-1.json",
+  "SelectedNode": "\\js\\entities.js",
   "PreviewInSolutionExplorer": false
 }
