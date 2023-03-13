@@ -4,7 +4,6 @@ import { loadLevel } from './loaders.js';
 import { createPlayer } from './entities.js';
 import { setupKeyboard } from './input.js';
 import { createCollisionLayer, createCameraLayer } from './layers.js';
-import { setupMouseControl } from './debug.js';
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
@@ -25,9 +24,6 @@ Promise.all([
 
         const input = setupKeyboard(player);
         input.listenTo(window);
-
-        //setupMouseControl(canvas, player, camera);
-
 
         const timer = new Timer(1 / 60);
         timer.update = function update(deltaTime) {
