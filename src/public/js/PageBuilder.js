@@ -1,4 +1,5 @@
-// import { joinRoom } from "./main.js";
+import { joinRoom } from "./multiplayerMain.js";
+
 
 export default class PageBuilder{
     createPage(content){

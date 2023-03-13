@@ -3,6 +3,7 @@ import { socket } from './main.js';
 
 const HIDE_ELEMENT = 'hidden-element';
 
+
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const roomId = urlParams.get('room');
