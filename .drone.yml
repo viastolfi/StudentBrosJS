@@ -5,6 +5,9 @@ name: StudentBrosJS
 trigger:
   event:
     - push
+  branch:
+    - main
+    - route_et_Container
 
 steps:
 
