@@ -3,6 +3,5 @@ WORKDIR /usr/src/app
 COPY /src ./
 RUN npm install
 EXPOSE 8080
-CMD [ "node", "app.js" ]
 
-ENTRYPOINT npm run start
+CMD npm run dev
