@@ -11,7 +11,7 @@ app.use(express.static('public'));
 let roomArray = []
 
 http.listen(port, () => {
-    console.log(`Listening on http://localhost${port}`)
+    console.log(`Listening on http://localhost:${port}`)
 })
 
 
