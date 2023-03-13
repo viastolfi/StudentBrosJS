@@ -1,20 +1,21 @@
 import Entity from './Entity.js';
-import { loadPersoSprites } from './sprites.js';
+import Go from './traits/Go.js';
+import Jump from './traits/Jump.js';
+import { loadPersoSprite } from './sprites.js';
 
 export function createPlayer() {
-    return loadPersoSprites().then(sprite => {
-        const player = new Entity();
-        player.pos.set(64, 64);
-        player.vel.set(2, -10);
+    return loadPersoSprite()
+        .then(sprite => {
+            const player = new Entity();
+            player.size.set(14, 16);
 
-        player.draw = function drawPlayer(context) {
-            sprite.draw('idle', context, this.pos.x, this.pos.y);
-        }
+            player.addTrait(new Go());
+            player.addTrait(new Jump());
 
-        player.update = function updatePlayer() {
-            this.pos.x += this.vel.x;
-            this.pos.y += this.vel.y;
-        }
-        return player;
-    });
+            player.draw = function drawPlayer(context) {
+                sprite.draw('idle', context, 0,0);
+            }
+
+            return player;
+        });
 }
