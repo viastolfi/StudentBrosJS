@@ -3,10 +3,10 @@ const RELEASED = 0;
 
 export default class KeyboardState {
     constructor() {
-        // Holds the current state of a given key
+        // Garde l'état d'une key
         this.keyStates = new Map();
 
-        // Holds the callback functions for a key code
+        // Contient les fonctions de rappel d'une key
         this.keyMap = new Map();
     }
 
@@ -18,10 +18,11 @@ export default class KeyboardState {
         const {code} = event;
 
         if (!this.keyMap.has(code)) {
-            // Did not have key mapped.
+            // Si le Keycode est inconnue
             return;
         }
 
+        //Priorise l'event d'input
         event.preventDefault();
 
         const keyState = event.type === 'keydown' ? PRESSED : RELEASED;

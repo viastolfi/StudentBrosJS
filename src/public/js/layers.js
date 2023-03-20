@@ -3,13 +3,17 @@ export function createBackgroundLayer(level, sprites) {
     const resolver = level.tileCollider.tiles;
 
     const buffer = document.createElement('canvas');
-    buffer.width = 500;    
+    buffer.width = 500;
     buffer.height = 240;    
 
     const context = buffer.getContext('2d');
 
     let startIndex, endIndex;
+
     function redraw(drawFrom, drawTo) {
+
+        //Evite de redessiner le fond pour rien
+
         if (drawFrom === startIndex && drawTo === endIndex) {
             return;
         }
@@ -17,6 +21,7 @@ export function createBackgroundLayer(level, sprites) {
         startIndex = drawFrom;
         endIndex = drawTo;
 
+        //Appel la fonction de dessin des tiles sur le fond pour chaque case de la grille
         for (let x = startIndex; x <= endIndex; ++x) {
             const col = tiles.grid[x];
             if (col) {

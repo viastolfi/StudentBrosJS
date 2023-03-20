@@ -6,6 +6,7 @@ export default class Entity {
         this.vel = new Vec2(0, 0);
         this.size = new Vec2(0, 0);
 
+        //Liste des caractérisques
         this.traits = [];
     }
 

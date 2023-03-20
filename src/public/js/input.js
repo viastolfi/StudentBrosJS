@@ -3,6 +3,8 @@ import Keyboard from './KeyboardState.js';
 export function setupKeyboard(entity) {
     const input = new Keyboard();
 
+    //Associe certaines touches aux les fonctionnalitées saut, avancer, reculer
+
     input.addMapping('Space', keyState => {
         if (keyState) {
             entity.jump.start();
