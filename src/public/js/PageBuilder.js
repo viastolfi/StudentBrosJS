@@ -1,4 +1,4 @@
-// import { joinRoom } from "./main.js";
+import { joinRoom } from './multiplayerMain.js';
 
 export default class PageBuilder{
     createPage(content){
@@ -11,7 +11,7 @@ export default class PageBuilder{
         parent.appendChild(newElement);
     }
 
-    displayRooms(roomArray){
+    static displayRooms(roomArray){
         let html = "";
         const roomsList = document.querySelector('#rooms-list');
         const roomsCard = document.querySelector('#rooms-card');
@@ -21,7 +21,7 @@ export default class PageBuilder{
                 if(room.players.length < 4){
                     roomsCard.classList.remove('hidden-element');
                     html += `<li>
-                            <p>Salon de ${room.players[0].username} - ${room.id}</p>
+                            <p>${room.players.length}/2 - ${room.id}</p>
                             <button class="join-room" data-room="${room.id}">Rejoindre</button>
                             </li>`;
                 }
@@ -31,5 +31,14 @@ export default class PageBuilder{
         for(const element of document.getElementsByClassName('join-room')){
             element.addEventListener('click', joinRoom, false);
         }
+    }
+
+    static CreateGame(){
+        let el = document.querySelector('.connection-element');
+        let game = document.querySelector('.game-container');
+        let waitingScreen = document.getElementById('match-making');
+        el.remove();
+        game.style.display = 'block';
+        waitingScreen.style.display = 'none';
     }
 }

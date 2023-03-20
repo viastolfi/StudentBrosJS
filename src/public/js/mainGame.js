@@ -8,6 +8,8 @@ import { createCollisionLayer, createCameraLayer } from './layers.js';
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
+console.log('Welcome in game');
+
 Promise.all([
     createPlayer(),
     loadLevel('1-1'),

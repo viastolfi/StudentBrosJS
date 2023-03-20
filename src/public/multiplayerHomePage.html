@@ -14,37 +14,36 @@
     <br>
     <br>
     <br>
-
-    <div id="user-card">
-        <form method="POST" id="form">
-            <border id="border">
-                <div class="join-room-container">
-                    <input type="text" class="input-container" id="username" minlength="2" placeholder="nom utilisateur" required>
-                    <button class="btn-primary" id="start" type="submit">Créer un salon privée</button>
-                </div>
-            </border>
-        </form>
+    
+    <div id="match-making" style="display: none;">
+            <h3 id="searching-for-match">Searching for Match...</h3>
     </div>
 
-    <div id="waiting-area" class="centered-element hidden-element">
-        En attente d'autre joueur
+    <div class="connection-element">
+        <div id="user-card">
+            <form method="POST" id="form">
+                <border id="border">
+                    <div class="join-room-container">
+                        <input type="text" class="input-container" id="username" minlength="2" placeholder="nom utilisateur" required>
+                        <button class="btn-primary" id="start" type="submit">Créer un salon privée</button>
+                    </div>
+                </border>
+            </form>
+        </div>
+
+        <div class="hidden-element" id="rooms-card">
+            <div>Salons disponibles</div>
+            <ul id="rooms-list"></ul>
+        </div>
     </div>
 
-    <div id="share-card" class="hidden-element">
-        Partage ce lien pour inviter quelqu'un à jouer avec toi
-        <span id="link-to-share"></span>
-    </div>
-
-    <br>
-    <br>
-
-    <div class="hidden-element" id="rooms-card">
-        <div>Salons disponibles</div>
-        <ul id="rooms-list"></ul>
+    <div class="game-container" style="display: none;">
+        <canvas id="screen" width="640" height="640"></canvas>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
     <script type="module" src="./js/multiplayerMain.js"></script>
+    <script type='module' src='./js/mainGame.js'></script>
 </body>
-<script src="sounds.js"></script>
+<!--<script src="sounds.js"></script>-->
 </html>

@@ -8,7 +8,6 @@ const port = 8081;
 
 app.use(express.static('public'));
 
-let roomArray = []
 
 http.listen(port, () => {
     console.log(`Listening on http://localhost${port}`)
@@ -30,5 +29,4 @@ app.all('/multijoueurs', function(req, res) {
 	
 module.exports = {
     io,
-    roomArray,
 }
