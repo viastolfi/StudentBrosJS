@@ -1,4 +1,4 @@
-import TileResolver from "./TileResolver.js";
+import TileResolver from "./TileResolver.js"
 
 export default class TileCollider {
     constructor(tileMatrix) {
@@ -21,6 +21,9 @@ export default class TileCollider {
 
         matches.forEach(match => {
             if (match.tile.type !== 'ground') {
+                if (match.tile.type == 'flag') {
+                    this.endGame();
+                }
                 return;
             }
 
@@ -73,5 +76,8 @@ export default class TileCollider {
                 }
             }
         });
+    }
+    endGame() {
+        window.location.replace("../index.html");
     }
 }

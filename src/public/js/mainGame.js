@@ -8,18 +8,20 @@ import { createCollisionLayer, createCameraLayer } from './layers.js';
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
 
+const currentLevel = '1-1';
+
 Promise.all([
     createPlayer(),
-    loadLevel('1-1'),
+    loadLevel(currentLevel)
 ])
-    .then(([player, level]) => {
+    .then(([player,level]) => {
+
         const camera = new Camera();
         window.camera = camera;
 
-        player.pos.set(64, 64);
-
         level.comp.layers.push(createCollisionLayer(level), createCameraLayer(camera));
-
+    
+        player.pos.set(64, 64);
         level.entities.add(player);
 
         const input = setupKeyboard(player);
@@ -27,8 +29,9 @@ Promise.all([
 
         const timer = new Timer(1 / 60);
         timer.update = function update(deltaTime) {
+            
             level.update(deltaTime);
-
+             
             level.comp.draw(context, camera);
 
             camera.pos.x = 0
