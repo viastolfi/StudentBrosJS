@@ -77,6 +77,7 @@ export default class TileCollider {
             }
         });
     }
+
     endGame() {
         window.location.replace("../index.html");
     }
