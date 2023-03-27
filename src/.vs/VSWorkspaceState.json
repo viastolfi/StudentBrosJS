@@ -2,9 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\public",
-    "\\public\\js",
-    "\\public\\styles\\img"
+    "\\public\\js"
   ],
-  "SelectedNode": "\\public\\js\\spriteSheet.js",
+  "SelectedNode": "\\public\\js\\mainGame.js",
   "PreviewInSolutionExplorer": false
 }

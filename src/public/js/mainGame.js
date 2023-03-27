@@ -3,7 +3,7 @@ import Timer from './Timer.js';
 import { loadLevel } from './loaders.js';
 import { createPlayer } from './entities.js';
 import { setupKeyboard } from './input.js';
-import { createCollisionLayer, createCameraLayer } from './layers.js';
+import { createCollisionLayer } from './layers.js';
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
@@ -19,25 +19,24 @@ Promise.all([
         const camera = new Camera();
         window.camera = camera;
 
-        level.comp.layers.push(createCollisionLayer(level), createCameraLayer(camera));
+        level.comp.layers.push(createCollisionLayer(level));
     
         player.pos.set(64, 64);
         level.entities.add(player);
 
         const input = setupKeyboard(player);
         input.listenTo(window);
+        
 
         const timer = new Timer(1 / 60);
+
         timer.update = function update(deltaTime) {
             
             level.update(deltaTime);
              
             level.comp.draw(context, camera);
 
-            camera.pos.x = 0
-            if (player.pos.x > camera.size.x / 2) {
-                camera.pos.x = player.pos.x - camera.size.x / 2;
-            }
+            camera.setPos(player);
         }
 
         timer.start();
