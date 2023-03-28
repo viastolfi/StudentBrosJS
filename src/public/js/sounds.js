@@ -8,4 +8,3 @@ button.addEventListener("click",playMusic)
 function playMusic(){
     sound.play()
 }
-
