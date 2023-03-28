@@ -4,6 +4,8 @@ import { loadLevel } from './loaders.js';
 import { createPlayer } from './entities.js';
 import { setupKeyboard } from './input.js';
 import { createCollisionLayer, createCameraLayer } from './layers.js';
+import { socket } from './main.js'
+import { game } from './multiplayerMain.js'
 
 const canvas = document.getElementById('screen');
 const context = canvas.getContext('2d');
@@ -19,6 +21,7 @@ Promise.all([
         window.camera = camera;
 
         player.pos.set(64, 64);
+        game.pos.set(64, 64);
 
         level.comp.layers.push(createCollisionLayer(level), createCameraLayer(camera));
 
@@ -30,6 +33,11 @@ Promise.all([
         const timer = new Timer(1 / 60);
         timer.update = function update(deltaTime) {
             level.update(deltaTime);
+            if(game.isMulti && player.pos != game.pos){
+                socket.sendPos(player.pos);
+                game.pos = player.pos;
+            }
+            socket.receiveCord();
 
             level.comp.draw(context, camera);
 

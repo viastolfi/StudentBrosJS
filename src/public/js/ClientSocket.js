@@ -1,4 +1,5 @@
 import PageBuilder from "./PageBuilder.js";
+import { game } from './multiplayerMain.js'
 
 export default class ClientSocket{
     constructor(){
@@ -13,6 +14,7 @@ export default class ClientSocket{
     startGame(){
         this.sock.on('start game', () => {
             PageBuilder.CreateGame();
+            game.isMulti = true;
         })
     }
 
@@ -20,6 +22,16 @@ export default class ClientSocket{
         this.sock.emit('getRooms', (response) => {
             console.log(response.rooms);
             PageBuilder.displayRooms(response.rooms)
+        })
+    }
+
+    sendPos(playerPosition){
+        this.sock.emit('pos', playerPosition);
+    }
+
+    receiveCord(){
+        this.sock.on('getEnnemyPos', function(data) {
+            console.log(data);
         })
     }
 }

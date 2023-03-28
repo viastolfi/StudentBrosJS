@@ -41,6 +41,11 @@ io.on('connection', (socket) => {
             rooms: rooms,
         })
     })
+
+    socket.on('pos', function(data) {
+        //console.log(data)
+        io.to(socket.id).emit('getEnnemyPos', data);
+    })
 });
 
 function matchMaker(socketId) {
