@@ -31,3 +31,4 @@ Le serveur est ouvert sur l'adresse `localhost:8080`
 - Les branches ne doivent pas durer plus longtemps qu'un sprint et être merge régulièrement
 - commentés uniquement ce qui doit l'être
 - essayer de garder son code lisible et clair pour tout le monde (retour à la ligne, ...) 
+
