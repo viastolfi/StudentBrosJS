@@ -22,7 +22,7 @@ const onCreateRoom = function (event){
     const username = document.querySelector('#username');
     let usernameValue = username.value;
 
-    socket.sendPlayerData(usernameValue);
+    socket.sendPlayerData(usernameValue, roomId);
 
     document.getElementById('user-card').remove();
     document.getElementById('match-making').style.display = 'block';

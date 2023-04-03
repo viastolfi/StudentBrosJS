@@ -20,7 +20,6 @@ export default class ClientSocket{
 
     getRoomList(){
         this.sock.emit('getRooms', (response) => {
-            console.log(response.rooms);
             PageBuilder.displayRooms(response.rooms)
         })
     }
@@ -30,8 +29,8 @@ export default class ClientSocket{
     }
 
     receiveCord(){
-        this.sock.on('getEnnemyPos', function(data) {
-            console.log(data);
+        return new Promise((resolve, reject) => {
+            this.sock.once('getEnnemyPos', (data) => resolve(data))
         })
     }
 }

@@ -1,11 +1,8 @@
 import { joinRoom } from './multiplayerMain.js';
 
 export default class PageBuilder{
-    createPage(content){
-
-    }
-
-    addElement(content, parent){
+        
+    static addElement(content, parent){
         let newElement = document.createElement('p');
         newElement.textContent = content;
         parent.appendChild(newElement);

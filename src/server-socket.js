@@ -43,10 +43,22 @@ io.on('connection', (socket) => {
     })
 
     socket.on('pos', function(data) {
+        let ennemyPlayer = getEnnemyPlayer(socket.id);
         //console.log(data)
-        io.to(socket.id).emit('getEnnemyPos', data);
+        io.to(ennemyPlayer).emit('getEnnemyPos', data);
     })
 });
+
+function getEnnemyPlayer(id){
+    for(let game in games){
+        if(games[game].player1 == id){
+            return games[game].player2;
+        }
+        if(games[game].player2 == id){
+            return games[game].player1;
+        }
+    }
+}
 
 function matchMaker(socketId) {
     if(matchmaking.length != 0 ){

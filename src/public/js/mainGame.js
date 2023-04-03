@@ -12,34 +12,37 @@ const context = canvas.getContext('2d');
 
 console.log('Welcome in game');
 
-Promise.all([
-    createPlayer(),
-    loadLevel('1-1'),
-])
-    .then(([player, level]) => {
+    Promise.all([
+        createPlayer(),
+        createPlayer(),
+        loadLevel('1-1'),
+    ])
+.then(([player, player2, level]) => {
         const camera = new Camera();
         window.camera = camera;
 
         player.pos.set(64, 64);
-        game.pos.set(64, 64);
-
+        player2.pos.set(64,64);
         level.comp.layers.push(createCollisionLayer(level), createCameraLayer(camera));
 
         level.entities.add(player);
+        level.entities.add(player2);
 
         const input = setupKeyboard(player);
         input.listenTo(window);
 
         const timer = new Timer(1 / 60);
         timer.update = function update(deltaTime) {
-            level.update(deltaTime);
-            if(game.isMulti && player.pos != game.pos){
-                socket.sendPos(player.pos);
-                game.pos = player.pos;
-            }
-            socket.receiveCord();
+            level.update(deltaTime)
 
             level.comp.draw(context, camera);
+
+            if(game.isMulti){
+                socket.sendPos(player.pos);
+                socket.receiveCord().then(function(result) {
+                    player2.pos.set(result['x'], result['y']);
+                })
+            }
 
             camera.pos.x = 0
             if (player.pos.x > camera.size.x / 2) {
